@@ -185,7 +185,6 @@ void handleFileList() {
 }
 
 void connectToWifiOrConfig() {
-  WiFi.softAPdisconnect();
 
   DynamicJsonDocument configDoc = prefs.get();
 
@@ -213,7 +212,7 @@ void connectToWifiOrConfig() {
     delay(500);
     DBG_OUTPUT_PORT.print(".");
   }
-  WiFi.softAPdisconnect();
+  WiFi.mode(WIFI_STA);
   if (connected) {
     connectedToStation = true;
     DBG_OUTPUT_PORT.println("");
