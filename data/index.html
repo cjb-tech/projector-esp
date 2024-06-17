@@ -1,0 +1,65 @@
+<html>
+<head>
+
+  <meta name="theme-color" content="#232323">
+  <meta name="msapplication-navbutton-color" content="#232323">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#232323">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta charset="UTF-8">
+
+  <title>Index Page</title>
+  <style>
+    html, body {
+      font-family: "Roboto Light", "Segoe UI", "SF Pro", Arial, sans-serif;
+      background-color: #232323;
+      color: #fafafa;
+    }
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0.5rem;
+    }
+
+    .grid {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    button {
+      background: linear-gradient(to bottom, #565656, #434343);
+      border-radius: 0.5rem;
+      border: none;
+
+      font: inherit;
+      font-size: 4rem;
+      color: inherit;
+    }
+
+    button:active {
+      background: linear-gradient(to bottom, #676767, #565656);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>
+        <a href="/remote" >Remote control</a>
+    </li>
+    <li>
+        <a href="/config">Configuration</a>
+    </li>
+    <li>
+        <a href="/edit">Admin panel</a>
+    </li>
+  </ul>
+</body>
+</html>

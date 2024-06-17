@@ -1,0 +1,87 @@
+<html>
+<head>
+
+  <meta name="theme-color" content="#232323">
+  <meta name="msapplication-navbutton-color" content="#232323">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#232323">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta charset="UTF-8">
+
+  <title>Remote control</title>
+  <script>
+    function buttonClick(command, control) {
+      if (!command) {
+        return;
+      }
+      if(control){
+        control.setAttribute("disabled", "true");
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', "/api/$TEMP_KEY/" + command);
+      xhr.onreadystatechange = function(event){
+        if(control && xhr.readyState == XMLHttpRequest.DONE){
+          control.removeAttribute("disabled");
+        }
+      };
+      xhr.send();
+    }
+  </script>
+  <style>
+    html, body {
+      font-family: "Roboto Light", "Segoe UI", "SF Pro", Arial, sans-serif;
+      background-color: #232323;
+      color: #fafafa;
+    }
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+      transition: 0.25s ease-in-out;
+      transition-property: opacity, transform, background, width, height, padding;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    button {
+      --size: 16rem;
+      width: var(--size);
+      height: var(--size);
+      background: linear-gradient(to bottom, #565656, #434343);
+      border-radius: 0.5rem;
+      border: none;
+
+      font: inherit;
+      font-size: 4rem;
+      color: inherit;
+      padding: 1rem;
+      box-shadow: 0.5rem 1rem 4rem rgba(0, 0, 0, 0.5);
+      border-radius: var(--size);
+    }
+
+    button:active {
+      background: linear-gradient(to bottom, #676767, #565656);
+    }
+
+    button:disabled {
+      opacity: 0.25;
+    }
+  </style>
+</head>
+
+<body>
+
+<button onclick="buttonClick('powerBtn', this)">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M13,3H11V13H13V3M17.83,5.17L16.41,6.59C18.05,7.91 19,9.9 19,12A7,7 0 0,1 12,19C8.14,19 5,15.88 5,12C5,9.91 5.95,7.91 7.58,6.58L6.17,5.17C2.38,8.39 1.92,14.07 5.14,17.86C8.36,21.64 14.04,22.1 17.83,18.88C19.85,17.17 21,14.65 21,12C21,9.37 19.84,6.87 17.83,5.17Z" />
+   </svg>
+</button>
+
+</body>
+</html>
